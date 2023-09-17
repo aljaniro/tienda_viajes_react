@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Articulos from "./component/articulos";
+import { Cargatodo } from "./component/contexto";
+import Navbar from "./component/navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Detalles from "./component/detalles";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <BrowserRouter>
+      <Cargatodo>
+        <div
+          className="App"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            flexWrap: "wrap",
+            alignContent: "center",
+            gap: "10px",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <div
+            classname="titulo"
+            style={{
+              width: "100%",
+              height: "100px",
+              textAlign: "center",
+              paddingTop: "20px",
+              color: "white",
+            }}
+          >
+            <Navbar></Navbar>
+          </div>
+         
+          <Routes>
+            <Route path="/" element={ <Articulos></Articulos>} />
+            <Route path="/detalles" element={<Detalles></Detalles>} />
+          </Routes>
+        </div>
+      </Cargatodo>
+    </BrowserRouter>
   );
 }
 
